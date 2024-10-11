@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         const a = Number(prompt('월을 입력해주세요.', ''))
+
+         if (3 <= a && a <= 5) {
+            alert('봄입니다.')
+         } else if (6 <= a && a <= 8) {
+            alert('여름입니다.')
+         } else if (9 <= a && a <= 11) {
+            alert('가을입니다.')
+         } else if (12 === a || (a > 0 && a <= 2)) {
+            alert('겨울입니다.')
+         } else {
+            alert('1 ~ 12 사이의 숫자를 입력해주세요.')
+         }
+      </script>
+   </body>
+</html>

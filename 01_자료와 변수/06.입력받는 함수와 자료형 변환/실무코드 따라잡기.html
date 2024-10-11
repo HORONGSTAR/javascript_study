@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         //inch를 입력받아 cm로 바꾸는 코드(1 inch = 2.54 cm)
+         //1. inch값을 입력받기
+         let value = prompt('변경할 값을 입력하세요\n ( inch -> cm 변환 )')
+         // prompt는 무조건 입력받은 값이 문자열 타입
+
+         //2. 입력받은 inch값을 숫자형으로 변경
+         value = Number(value)
+         document.write(`${value} inch`)
+
+         //3. 숫자형으로 변경한 inch값을 cm로 변경
+         value = value * 2.54
+
+         //4. 출력
+         document.write(`-> ${value}cm`)
+      </script>
+   </body>
+</html>

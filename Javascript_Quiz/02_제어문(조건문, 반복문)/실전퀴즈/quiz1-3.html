@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         const a = Number(prompt('학년을 입력하세요. (1~6)'))
+         const b = Number(prompt('점수를 입력하세요. (0~100)'))
+
+         if (b >= 0 && b <= 100) {
+            if (a === 4) {
+               if (b >= 70) {
+                  document.write(`${a}학년 ${b}점 [합격]`)
+               } else {
+                  document.write(`${a}학년 ${b}점 [불합격]`)
+               }
+            } else {
+               if (b >= 60) {
+                  document.write(`${a}학년 ${b}점 [합격]`)
+               } else {
+                  document.write(`${a}학년 ${b}점 [불합격]`)
+               }
+            }
+         } else {
+            alert('점수 에러입니다. 0 ~ 100점 사이의 점수를 입력해주세요.')
+         }
+      </script>
+   </body>
+</html>

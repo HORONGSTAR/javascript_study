@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         const rawInput = prompt('태어난 해를 입력해주세요.', '')
+         const year = Number(rawInput)
+         const e = year % 12
+
+         switch (e) {
+            case 0:
+               alert(`${rawInput}년생은 원숭이띠 입니다.`)
+               break
+            case 1:
+               alert(`${rawInput}년생은 닭띠 입니다.`)
+               break
+            case 2:
+               alert(`${rawInput}년생은 개띠 입니다.`)
+               break
+            case 3:
+               alert(`${rawInput}년생은 돼지띠 입니다.`)
+               break
+            case 4:
+               alert(`${rawInput}년생은 쥐띠 입니다.`)
+               break
+            case 5:
+               alert(`${rawInput}년생은 소띠 입니다.`)
+               break
+            case 6:
+               alert(`${rawInput}년생은 호랑이띠 입니다.`)
+               break
+            case 7:
+               alert(`${rawInput}년생은 토끼띠 입니다.`)
+               break
+            case 8:
+               alert(`${rawInput}년생은 용띠 입니다.`)
+               break
+            case 9:
+               alert(`${rawInput}년생은 뱀띠 입니다.`)
+               break
+            case 10:
+               alert(`${rawInput}년생은 말띠 입니다.`)
+               break
+            case 11:
+               alert(`${rawInput}년생은 양띠 입니다.`)
+               break
+         }
+      </script>
+   </body>
+</html>

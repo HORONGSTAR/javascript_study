@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         let list = ''
+
+         // 누적 합산
+         list += '<ul>' // list = list + '<ul>'
+         list += '<li>Hello</li>' // list = list + '<ul> + <li>Hello</li>'
+         list += '<li>Hello</li>'
+         list += '<li>Hello</li>'
+         list += '<li>Hello</li>'
+         list += '<li>Hello</li>'
+         list += '</ul>'
+
+         console.log(list)
+         document.write(list)
+
+         //백틱
+         let list2 = `
+            <ul>
+            <li>Hello</li>
+            <li>Hello</li>
+            <li>Hello</li>
+            <li>Hello</li>
+            <ul>
+                `
+
+         console.log(list)
+         document.write(list)
+      </script>
+   </body>
+</html>
