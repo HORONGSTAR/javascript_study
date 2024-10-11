@@ -1,0 +1,98 @@
+/* 초기화 */
+
+body {
+   margin: 0;
+   padding: 0;
+   font-size: 14px;
+}
+
+ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+a {
+   text-decoration: none;
+   color: black;
+}
+
+div.wrap {
+   max-width: 1280px;
+   margin: 0 auto;
+}
+
+/* 헤더 */
+
+nav {
+   margin-top: 30px;
+   display: flex;
+   width: 100%;
+   justify-content: center;
+}
+
+nav a {
+   display: flex;
+   width: 100px;
+   height: 30px;
+   justify-content: center;
+   align-items: center;
+}
+
+nav a:hover {
+   color: #fff;
+   background: black;
+}
+
+nav ul.menu {
+   display: flex;
+   border-bottom: 1px solid black;
+   position: relative;
+}
+
+nav ul.menu > li:hover ul.sub-menu {
+   display: block;
+}
+
+nav ul.sub-menu {
+   position: absolute;
+   top: 30px;
+   border-top: 1px solid black;
+   background: #fff;
+   display: none;
+}
+
+/* 메인 */
+
+main section {
+   margin: 20px 0;
+   display: flex;
+   justify-content: center;
+}
+
+main div.content1 {
+   width: 500px;
+   height: 300px;
+   border-radius: 10px;
+   background: url(./images/leaf2.jpg) no-repeat center/cover;
+}
+main div.content2 {
+   text-align: center;
+}
+
+main div.content3 {
+   text-align: center;
+   width: 500px;
+   height: 300px;
+}
+
+/* 미디어쿼리 */
+
+@media all and (max-width: 1023px) and (min-width: 668px) {
+   div.wrap {
+      width: 100%;
+   }
+}
+
+@media all and (max-width: 667px) {
+}
