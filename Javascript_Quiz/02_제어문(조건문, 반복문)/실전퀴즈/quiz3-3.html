@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-        
-    </script>
-</body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         var star = ''
+         for (let i = 1; i <= 7; i++) {
+            if (i % 2 === 0) {
+               continue
+            }
+            for (let j = 7; j - i > 0; j--) {
+               if (j % 2 === 0) {
+                  continue
+               }
+               star += ' '
+            }
+            for (let j = 0; j < i; j++) {
+               star += '*'
+            }
+
+            star += '\n'
+         }
+         console.log(star)
+      </script>
+   </body>
 </html>

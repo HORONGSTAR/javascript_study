@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script></script>
-</body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         const n1 = Number(prompt('첫번째 숫자를 입력하세요.'))
+         const n2 = Number(prompt('두번째 숫자를 입력하세요.'))
+         const n3 = Number(prompt('세번째 숫자를 입력하세요.'))
+
+         const numMax = [n1, n2, n3]
+         const numMin = [n1, n2, n3]
+
+         const sum = n1 + n2 + n3
+         const average = sum / 3
+
+         for (const i in numMax) {
+            if (numMax[i] < average) {
+               numMax.splice(i, 1)
+               console.log(numMax)
+            }
+            if (numMax.length >= 2) {
+               numMax[0] <= numMax[1] ? numMax.splice(0, 1) : numMax.splice(1, 1)
+            }
+         }
+
+         for (const i in numMin) {
+            if (numMin[i] > average) {
+               numMin.splice(i, 1)
+               console.log(numMax)
+            }
+            if (numMin.length >= 2) {
+               numMin[0] >= numMin[1] ? numMin.splice(0, 1) : numMin.splice(1, 1)
+            }
+         }
+
+         document.write(`${n1}, ${n2}, ${n3} <br>`)
+
+         document.write(`최대값: ${numMax} <br>`)
+         document.write(`최소값: ${numMin} <br>`)
+         document.write(`합계: ${sum} <br>`)
+         document.write(`평균: ${average} <br>`)
+      </script>
+   </body>
 </html>
