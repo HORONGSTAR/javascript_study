@@ -12,7 +12,10 @@
          const dict = ['다소니', '가람', '미르', '미리내', '그린내', '마루', '비나리']
 
          if (dict.indexOf(search) !== -1) {
+            index = dict.indexOf(search)
+            document.write(dict[index])
          } else {
+            alert('찾는 단어가 사전에 없습니다.')
          }
       </script>
    </body>
