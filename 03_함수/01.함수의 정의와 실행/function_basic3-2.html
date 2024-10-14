@@ -7,11 +7,12 @@
    </head>
    <body>
       <script>
+         // return 값이 없는 경우
          function add(a, b) {
-            return a + b
+            console.log(a + b)
          }
-
-         document.write(add(4, 6))
+         // return 값이 없는 함수를 실행시에는 받을 값이 없으므로 변수에서 받지x(변수없이 함수만 사용해도 실행가능)
+         add(1, 2)
       </script>
    </body>
 </html>

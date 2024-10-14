@@ -7,11 +7,17 @@
    </head>
    <body>
       <script>
-         function add(a, b) {
-            return a + b
+         function printNumber(num) {
+            if (num == 2) {
+               return
+            }
+
+            console.log(`매개변수로 받은 숫자는 ${num}입니다`)
          }
 
-         document.write(add(4, 6))
+         printNumber(1)
+         printNumber(2)
+         printNumber(3)
       </script>
    </body>
 </html>
