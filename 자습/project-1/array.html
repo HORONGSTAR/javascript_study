@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         const a = [
+            [1, 2, 3, 4, 5],
+            ['A', 'B', 'C', 'D', 'E'],
+            ['가', '나', '다', '라', '마'],
+         ]
+
+         const n = a[1].indexOf('C')
+
+         a[1].splice(n, 1, 'X')
+
+         document.write(a)
+      </script>
+   </body>
+</html>
