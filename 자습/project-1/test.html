@@ -7,11 +7,17 @@
    </head>
    <body>
       <script>
-         function add(a, b) {
-            return a + b
-         }
+         let arr = [1, '문자열', true, 13, '50']
+         let text = `배열 arr의 구성요소는 [${arr}] 이다. <br>`
+         const types = ['number', 'string', 'boolean']
 
-         document.write(add(4, 6))
+         types.forEach((type) => {
+            arr.filter((a) => typeof a == type).forEach(
+               (a) => (text += `[${a}]의 타입은 [${type}]이다.<br>`)
+            )
+         })
+
+         document.write(text)
       </script>
    </body>
 </html>
