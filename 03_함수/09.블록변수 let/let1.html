@@ -7,14 +7,15 @@
    </head>
    <body>
       <script>
-         const prices = [150, 50, 70, 200]
-         const result = prices.map((price) => {
-            if (price < 100) {
-               price = '할인'
+         function logScope() {
+            const local = 2
+            if (local) {
+               const local = '다른 값'
+               console.log('블록안의 const:', local)
             }
-            return price
-         })
-         console.log(result)
+            console.log('local:', local)
+         }
+         logScope()
       </script>
    </body>
 </html>

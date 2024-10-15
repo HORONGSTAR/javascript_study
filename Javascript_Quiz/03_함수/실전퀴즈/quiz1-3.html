@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <script>
-      const max = function (...array) {};
+   <head>
+      <title>-</title>
+      <script>
+         const max = function (...array) {
+            let n = array[0]
+            for (let a of array) {
+               if (n < a) {
+                  n = a
+               }
+            }
+            return n
+         }
 
-      console.log(max(1, 2, 3, 4));
-    </script>
-  </head>
-  <body></body>
+         console.log(max(1, 2, 3, 4))
+      </script>
+   </head>
+   <body></body>
 </html>

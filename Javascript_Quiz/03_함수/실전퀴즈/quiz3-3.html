@@ -10,6 +10,28 @@
       <script>
          const height = 180
          const weight = 80
+
+         function standardW(h) {
+            return `당신의 적정 체중은 ${(h - 100) * 0.9}kg 이고, `
+         }
+
+         function weightBmi(h, w) {
+            const bmi = w / ((h * h) / 10000)
+            var result = ''
+            if (bmi < 20) {
+               return `당신의 bmi는 저체중 입니다.`
+            } else if (bmi >= 20 && bmi < 25) {
+               return `당신의 bmi는 정상 입니다.`
+            } else if (bmi >= 25 && bmi < 30) {
+               return `당신의 bmi는 과체중 입니다.`
+            } else if (bmi >= 30 && bmi < 40) {
+               return `당신의 bmi는 비만 입니다.`
+            } else {
+               return `당신의 bmi는 고도비만 입니다.`
+            }
+         }
+
+         console.log(standardW(height), weightBmi(height, weight))
       </script>
    </body>
 </html>

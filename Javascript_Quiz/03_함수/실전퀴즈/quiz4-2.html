@@ -8,7 +8,16 @@
    <body>
       <script>
          const roles = ['user', 'admin', 'user', 'admin']
-         const emails = ['alice@example.com', 'bob@example.com', 'charlie@example.com', 'david@example.com']
+         const emails = [
+            'alice@example.com',
+            'bob@example.com',
+            'charlie@example.com',
+            'david@example.com',
+         ]
+
+         const adminEmails = emails.filter((el, idx) => roles[idx] == 'admin')
+
+         console.log(adminEmails)
       </script>
    </body>
 </html>

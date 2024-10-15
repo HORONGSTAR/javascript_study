@@ -3,7 +3,13 @@
    <head>
       <title>-</title>
       <script>
-         const multiplyAll = function (a, b) {}
+         const multiplyAll = function (a, b) {
+            let n = 0
+            for (let i = a; i <= b; i++) {
+               n += i
+            }
+            return n
+         }
 
          console.log(multiplyAll(1, 2))
          console.log(multiplyAll(1, 3))

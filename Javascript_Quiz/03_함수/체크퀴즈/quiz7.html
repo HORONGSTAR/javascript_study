@@ -7,8 +7,15 @@
    </head>
    <body>
       <script>
-         const num = prompt('숫자를 입력하세요.', 0)
+         const num = Number(prompt('숫자를 입력하세요.', 0))
 
+         const twice = (n) => {
+            if (n % 2 === 0) {
+               alert('2의 배수입니다.')
+            } else {
+               alert('2의 배수가 아닙니다.')
+            }
+         }
          twice(num)
       </script>
    </body>
