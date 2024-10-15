@@ -8,17 +8,17 @@
    <body>
       <script>
          let arr = [5, 2, 8, 5, 1, 2, 3]
+         let arrclone = []
 
-         for (let A of arr) {
-            for (let i in arr) {
-               if (arr[i] == A) {
-                  if (arr.indexOf(A) !== -1) {
-                     arr.splice(i, 1)
-                     console.log(A, arr)
-                  }
-               }
+         for (let i in arr) {
+            let a = arr[i]
+            arr.splice(i, 1, null)
+            let n = arr.indexOf(a)
+            if (n == -1) {
+               arrclone.push(a)
             }
          }
+         arr = arrclone
          console.log(arr)
       </script>
    </body>
