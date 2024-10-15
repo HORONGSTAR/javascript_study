@@ -9,6 +9,13 @@
       <script>
          const prices = [3, 5, 2]
          const quantities = [10, 7, 5]
+         var num = 0
+
+         prices.forEach((el, idx) => {
+            num += el * quantities[idx]
+         })
+
+         console.log(num)
       </script>
    </body>
 </html>
