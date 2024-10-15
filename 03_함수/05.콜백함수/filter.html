@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         const wards = ['옷장', '컴퓨터', '식기세척기', '텔레비전', '시계']
+
+         // ES5
+         var val1 = wards.filter(function (el, idx, arr) {
+            return el.length <= 4
+         })
+         console.log(val1)
+
+         // ES6
+         var val2 = wards.filter((el) => el.length <= 4)
+         console.log(val2)
+      </script>
+   </body>
+</html>
