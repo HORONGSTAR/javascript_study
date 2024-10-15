@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         //지정한 시간에 함수를 실행한다.
+         setTimeout(() => {
+            console.log(`1초 후에 한번 실행`)
+         }, 1 * 1000) // 1000 = 1초
+
+         let conut = 0
+         setInterval(() => {
+            console.log(`1초마다 실행 ${conut}`)
+            conut++
+         }, 1 * 1000)
+      </script>
+   </body>
+</html>
