@@ -9,13 +9,17 @@
       <script>
          const prices = [3, 5, 2]
          const quantities = [10, 7, 5]
-         var num = 0
 
-         prices.forEach((el, idx) => {
-            num += el * quantities[idx]
-         })
+         function arrAdd(arr1, arr2) {
+            let num = 0
 
-         console.log(num)
+            arr1.forEach((el, idx) => {
+               num += el * arr2[idx]
+            })
+            console.log(num)
+         }
+
+         arrAdd(prices, quantities)
       </script>
    </body>
 </html>
