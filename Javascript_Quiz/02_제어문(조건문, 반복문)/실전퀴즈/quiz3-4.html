@@ -10,14 +10,21 @@
          let arr = [5, 2, 8, 5, 1, 2, 3]
          let arrclone = []
 
-         for (let i in arr) {
+         /* for (let i in arr) {
             let a = arr[i]
             arr.splice(i, 1, null)
             let n = arr.indexOf(a)
             if (n == -1) {
                arrclone.push(a)
             }
+         } */
+
+         for (let i = 0; i < arr.length; i++) {
+            if (arrclone.indexOf(arr[i]) === -1) {
+               arrclone.push(arr[i])
+            }
          }
+
          arr = arrclone
          console.log(arr)
       </script>

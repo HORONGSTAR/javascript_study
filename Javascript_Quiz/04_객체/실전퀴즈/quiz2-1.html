@@ -31,6 +31,11 @@
                email: 'lsh@student.com',
             },
          ]
+
+         arr.forEach((student) => {
+            let result = student.email
+            console.log(result.substring(0, result.indexOf('@')))
+         })
       </script>
    </head>
    <body></body>

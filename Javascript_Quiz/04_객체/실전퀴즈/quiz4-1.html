@@ -14,6 +14,12 @@
             { date: '2023-09-18', temperature: 30, precipitationChance: 80 },
             { date: '2023-09-19', temperature: 26, precipitationChance: 20 },
          ]
+
+         const result = weatherData
+            .filter((weather) => weather.temperature >= 25)
+            .forEach((weather) =>
+               console.log(`날짜: ${weather.date} 기온: ${weather.temperature}도`)
+            )
       </script>
    </body>
 </html>

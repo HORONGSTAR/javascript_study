@@ -36,6 +36,16 @@
                },
             ],
          }
+
+         const result = data.products
+            .map((product) => {
+               return (
+                  product.productName +
+                  ': ' +
+                  (product.price - product.price * 0.1).toLocaleString('ko-KR')
+               )
+            })
+            .forEach((product) => console.log(product))
       </script>
    </body>
 </html>

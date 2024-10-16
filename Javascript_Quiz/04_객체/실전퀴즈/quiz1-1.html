@@ -6,6 +6,12 @@
       <title>Document</title>
       <script>
          const str = '11.3345'
+
+         if (Number.isNaN(str)) {
+            console.log('숫자가 아닙니다.')
+         } else {
+            console.log(Number(str).toFixed(0))
+         }
       </script>
    </head>
    <body></body>

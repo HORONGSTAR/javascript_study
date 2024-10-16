@@ -31,6 +31,13 @@
                email: 'lsh@student.com',
             },
          ]
+
+         // const input = prompt('학생 이름 입력')
+         const input = '김은아'
+
+         let result = arr.filter((student) => student.name.includes(input))
+         result = result[0]
+         document.write(`${result.name}, ${result.grade}, ${result.email}`)
       </script>
    </head>
    <body></body>

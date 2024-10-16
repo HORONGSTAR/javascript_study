@@ -36,6 +36,9 @@
                },
             ],
          }
+
+         const result = data.products.filter((prod) => prod.inStock)
+         console.log(`${result[0].productName} : ${result[0].price.toLocaleString('ko-KR')}`)
       </script>
    </body>
 </html>

@@ -4,7 +4,13 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
-      <script></script>
+      <script>
+         var day = new Date()
+
+         document.write(
+            `${day.getFullYear()}-${day.getMonth()}-${day.getDate()} ${day.getHours()}:${day.getMinutes()}:${day.getSeconds()}`
+         )
+      </script>
    </head>
    <body></body>
 </html>
