@@ -95,23 +95,45 @@
                },
             ],
          }
-         console.log('----자습----')
+         const dramas = data.result
+         console.log(dramas[0])
+         console.log(dramas[1])
+         console.log(dramas[2])
+         console.log('')
+         console.log(dramas[0].title, dramas[0].year)
+         console.log(dramas[1].title, dramas[1].year)
+         console.log(dramas[2].title, dramas[2].year)
+         console.log('')
+         console.log(dramas[0].title, dramas[0].genre)
+         console.log(dramas[1].title, dramas[1].genre)
+         console.log(dramas[2].title, dramas[2].genre)
+         console.log('')
+         console.log(dramas[0].title, dramas[0].cast[0])
+         console.log(dramas[1].title, dramas[1].cast[0])
+         console.log(dramas[2].title, dramas[2].cast[0])
+         console.log('')
 
-         function dramasWidth(...key) {
-            const dramasKeys = key
-            for (let i in dramas) {
-               for (let dramasKey of dramasKeys) {
-                  let result = dramas[i][dramasKey]
-                  if (typeof result == 'object') {
-                     console.log(result[0])
-                  } else {
-                     console.log(result)
-                  }
-               }
-            }
-         }
+         // 드라마 주연배우 추가 후 확인하기
+         dramas[0].cast.push('권나라')
+         dramas[1].cast.push('서지혜')
+         dramas[2].cast.push('조현철')
+         console.log(dramas[0].cast)
+         console.log(dramas[1].cast)
+         console.log(dramas[2].cast)
 
-         dramasWidth('title', 'genre', 'cast')
+         // 이태원 클라쓰 시놉시스 수정하기
+
+         dramas[0].synopsis =
+            '불합리한 세상 속, 고집과 객기로 뭉친 청춘들의 힙한 반란이 시작된다. 세계를 압축해 놓은 듯한 이태원. 이 작은 거리, 각자의 가치관으로 자유를 쫓는 그들의 창업 신화 <이태원 클라쓰>'
+         console.log(dramas[0])
+
+         // 킹덤 장르 '좀비' -> '공포'로 수정
+         dramas[9].genre[0] = '공포'
+         console.log(dramas[9])
+
+         // 킹덤 시놉시스 삭제
+         delete dramas[0].synopsis
+         console.log(dramas[9])
       </script>
    </body>
 </html>
