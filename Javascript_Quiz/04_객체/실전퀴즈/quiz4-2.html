@@ -15,7 +15,12 @@
             { date: '2023-09-19', temperature: 26, precipitationChance: 20 },
          ]
 
-         weatherData.map((weather) => (weather.temperature * 9) / 5 + 32).forEach
+         weatherData
+            .map((weather) => (weather.temperature = (weather.temperature * 9) / 5 + 32))
+            .forEach((weather) => {
+               console.log(weather)
+               console.log(`날짜 : ${weather.date}, 기온: ${weather.temperature}`)
+            })
       </script>
    </body>
 </html>

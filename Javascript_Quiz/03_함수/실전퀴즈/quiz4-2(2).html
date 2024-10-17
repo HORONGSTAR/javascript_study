@@ -15,7 +15,9 @@
             'david@example.com',
          ]
 
-         const adminEmails = emails.filter((el, idx) => roles[idx] == 'admin')
+         const adminEmails = roles
+            .map((el, idx) => (el !== 'admin' ? null : emails[idx]))
+            .filter((el) => el)
 
          console.log(adminEmails)
       </script>
