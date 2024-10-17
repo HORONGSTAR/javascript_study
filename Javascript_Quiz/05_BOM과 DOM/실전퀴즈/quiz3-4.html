@@ -207,6 +207,20 @@
 
          const posts = boardData.posts
 
+         posts.forEach((post) => {
+            const tr = document.createElement('tr')
+
+            tr.innerHTML = `
+             <td>${post.id}</td>
+               <td class="title"><a href="./view.html">${post.title}</a></td>
+               <td>${post.author}</td>
+               <td>${post.date}</td>
+               <td>${post.views}</td>
+            
+            `
+            tbody.appendChild(tr)
+         })
+
          /* 
             게시판 데이터를 바탕으로 테이블 행을 생성하고 추가
             아래와 같은 형태로 #board-tbody에 추가

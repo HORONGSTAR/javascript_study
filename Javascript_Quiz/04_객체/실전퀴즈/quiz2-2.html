@@ -32,12 +32,13 @@
             },
          ]
 
-         // const input = prompt('학생 이름 입력')
-         const input = '김은아'
+         const input = prompt('학생 이름 입력')
 
-         let result = arr.filter((student) => student.name.includes(input))
-         result = result[0]
-         document.write(`${result.name}, ${result.grade}, ${result.email}`)
+         let result = arr
+            .filter((student) => student.name.includes(input))
+            .map((student) => `${student.name}, ${student.grade}, ${student.email}`)
+
+         document.write(result)
       </script>
    </head>
    <body></body>
