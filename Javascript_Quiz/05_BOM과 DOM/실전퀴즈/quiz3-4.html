@@ -204,12 +204,9 @@
 
          // 게시판 tbody 요소 가져오기
          const tbody = document.querySelector('#board-tbody')
-
          const posts = boardData.posts
-
          posts.forEach((post) => {
             const tr = document.createElement('tr')
-
             tr.innerHTML = `
              <td>${post.id}</td>
                <td class="title"><a href="./view.html">${post.title}</a></td>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <style>
+         .flower-list {
+            width: 200px;
+            height: 300px;
+            background-color: #eee;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="wrap">
+         <header></header>
+         <main>
+            <section class="flower-box"></section>
+         </main>
+         <footer></footer>
+      </div>
+      <script>
+         const date = {
+            flowers: [
+               {
+                  name: '수국',
+                  color: ['하양', '파랑', '보라', '분홍', '연두'],
+                  growth: 5,
+               },
+               {
+                  name: '장미',
+                  colors: ['하양', '분홍', '빨강', '보라', '검정'],
+                  growth: 7,
+               },
+               {
+                  name: '튤립',
+                  colors: ['하양', '노랑', '주황', '분홍', '빨강'],
+                  growth: 10,
+               },
+            ],
+         }
+
+         const flowers = date.flowers
+
+         const flowerBox = document.querySelector('.flower-box')
+         flowers.forEach((flower) => {
+            const flowerList = document.createElement('div')
+            flowerList.className = 'flower-list'
+            flowerList.innerHTML = `
+                <h3>${flower.name}</h3>
+                <p>${flower.colors}</p>
+                <p>${flower.growth}</p>
+            `
+            flowerBox.appendChild(flowerList)
+         })
+      </script>
+   </body>
+</html>
