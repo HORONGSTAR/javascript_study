@@ -55,14 +55,6 @@
          const flowerBox = document.querySelector('.flower-box')
 
          flowers.forEach((flower) => {
-            const button = document.createElement('button')
-            button.textContent = '물주기'
-
-            button.addEventListener('click', () => {
-               flower.growthDays += 1
-               console.log(flower.growthDays)
-            })
-
             const flowerList = document.createElement('div')
             flowerList.className = 'flower-list'
 
@@ -73,7 +65,6 @@
                 <p>[관수 횟수] ${flower.growthDays}일</p>
             `
             flowerBox.appendChild(flowerList)
-            flowerList.appendChild(button)
          })
       </script>
    </body>
