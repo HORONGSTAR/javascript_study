@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <style>
+         div.wrap {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+         }
+
+         h3 {
+            font-size: 24px;
+         }
+         div.gameboard {
+            display: flex;
+            justify-content: center;
+         }
+         div.gameboard > div {
+            min-width: 120px;
+            min-height: 180px;
+            background-color: pink;
+            margin: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="wrap">
+         <h3>Up-Down Game!</h3>
+         <div class="gameboard">
+            <div class="card1"></div>
+            <div class="card2"></div>
+         </div>
+         <div class="choice">
+            <p>
+               두번째 카드의 숫자는 <br />
+               첫번째 카드의 숫자보다...
+            </p>
+
+            <button onclick="clickResult('up')" id="maxbt">크다!</button>
+            <button onclick="clickResult('down')" id="minbt">작다!</button>
+         </div>
+      </div>
+      <script>
+         // card1에서 1~9까지 랜덤한 숫자카드의 앞면을 출력
+         // card2에서 1~9까지 랜덤한 숫자카드의 뒷면을 출력
+         const cardNum1 = Math.floor(Math.random() * 9) + 1
+         const cardNum2 = Math.floor(Math.random() * 9) + 1
+
+         const card1 = document.querySelector('.card1')
+         const card2 = document.querySelector('.card2')
+
+         card1.textContent = cardNum1
+         card2.textContent = '?'
+
+         // 선택지 버튼 [작다]와 [크다]를 제시
+
+         function clickResult(val) {
+            card2.textContent = cardNum2
+            if ((val = 'up')) {
+               if (cardNum1 < cardNum2) {
+               }
+            }
+         }
+
+         // 카드1과 비교한 카드2의 값을 예상해서 버튼을 클릭(이벤트)
+         // 카드2의 앞면을 출력하고 게임의 결과를 출력
+      </script>
+   </body>
+</html>
