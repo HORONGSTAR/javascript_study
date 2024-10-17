@@ -5,9 +5,16 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
       <style>
+         body {
+            font-size: 12px;
+         }
+         .flower-box {
+            display: flex;
+            justify-content: space-around;
+         }
          .flower-list {
             width: 200px;
-            height: 300px;
+            height: 200px;
             background-color: #eee;
          }
       </style>
@@ -25,34 +32,48 @@
             flowers: [
                {
                   name: '수국',
-                  color: ['하양', '파랑', '보라', '분홍', '연두'],
-                  growth: 5,
+                  colors: ['하양', '파랑', '보라', '분홍', '연두'],
+                  growthScore: 5,
+                  growthDays: 0,
                },
                {
                   name: '장미',
                   colors: ['하양', '분홍', '빨강', '보라', '검정'],
-                  growth: 7,
+                  growthScore: 7,
+                  growthDays: 0,
                },
                {
                   name: '튤립',
                   colors: ['하양', '노랑', '주황', '분홍', '빨강'],
-                  growth: 10,
+                  growthScore: 10,
+                  growthDays: 0,
                },
             ],
          }
 
          const flowers = date.flowers
-
          const flowerBox = document.querySelector('.flower-box')
+
          flowers.forEach((flower) => {
+            const button = document.createElement('button')
+            button.textContent = '물주기'
+
+            button.addEventListener('click', () => {
+               flower.growthDays += 1
+               console.log(flower.growthDays)
+            })
+
             const flowerList = document.createElement('div')
             flowerList.className = 'flower-list'
+
             flowerList.innerHTML = `
                 <h3>${flower.name}</h3>
-                <p>${flower.colors}</p>
-                <p>${flower.growth}</p>
+                <p>[색상] <br> ${String(flower.colors).replace(/,/g, ' · ')}</p>
+                <p>[필요 관수일] ${flower.growthScore}일</p>
+                <p>[관수 횟수] ${flower.growthDays}일</p>
             `
             flowerBox.appendChild(flowerList)
+            flowerList.appendChild(button)
          })
       </script>
    </body>

@@ -8,16 +8,16 @@
 
          // 처리합니다.
          // (1) 홀수만 추출
-         const result1 = numbers.filter((num) => num % 2 === 1)
-         console.log(result1)
+         const result = numbers
+            .filter((num) => num % 2 === 1)
+            .filter((num) => num <= 100)
+            .filter((num) => num % 5 === 0)
 
          // (2) 100 이하의 수만 추출
-         const result2 = numbers.filter((num) => num <= 100)
-         console.log(result2)
 
          // (3) 5로 나눈 나머지가 0인 수만 추출
-         const result3 = numbers.filter((num) => num % 5 === 0)
-         console.log(result3)
+
+         console.log(result)
 
          // 출력합니다.
       </script>

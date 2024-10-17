@@ -111,7 +111,7 @@
          dramas.forEach((drama) => {
             document.write(
                `<p> 제목: ${drama.title} | 줄거리: ${drama.synopsis} | 주연배우: ${drama.cast.map(
-                  (actor) => actor + ' ' // 리턴 값을 출력해주므로 map 함수를 사용
+                  (actor) => actor // 리턴 값을 출력해주므로 map 함수를 사용
                )}</p>`
             )
          })

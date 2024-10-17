@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <h1></h1>
+      <textarea></textarea>
+      <script>
+         const textarea = document.querySelector('textarea')
+         const h1 = document.querySelector('h1')
+
+         textarea.addEventListener('keyup', () => {
+            const length = textarea.value.length //textarea에 입력한 글자수 출력
+            const text = textarea.value // 입력한 문자열을 가져온다
+            h1.textContent = `${text} 글자수 ${length}`
+         })
+      </script>
+   </body>
+</html>
