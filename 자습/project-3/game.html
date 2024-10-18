@@ -4,78 +4,153 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet" />
       <style>
+         a {
+            color: salmon;
+            text-decoration: none;
+         }
+         body {
+            margin: 0;
+            padding: 0;
+         }
+
          div.wrap {
             width: 400px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
-            font-size: 14px;
+            font-size: 28px;
+            font-family: 'Dongle', sans-serif;
          }
 
-         h3 {
-            font-size: 24px;
-         }
-         div.gameboard {
+         section.gameboard {
             display: flex;
             justify-content: center;
+            align-items: center;
          }
-         div.gameboard > div {
+
+         div.card {
             min-width: 120px;
             min-height: 180px;
-            background-color: pink;
-            margin: 10px 20px;
+            background-color: salmon;
             border-radius: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
+            font-size: 80px;
             font-weight: bold;
             color: white;
+         }
+
+         div.equal-sign {
+            padding-top: 44px;
+            min-width: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            font-weight: bold;
+            color: salmon;
+         }
+         button {
+            border: none;
+            border-radius: 4px;
+            background-color: lightgray;
+            width: 80px;
+            height: 42px;
+            font-size: 30px;
+            font-family: 'Dongle', sans-serif;
+         }
+
+         button:hover:not(:disabled) {
+            background-color: gray;
+         }
+
+         .button-color {
+            background-color: salmon;
+            color: #000;
+         }
+
+         .back {
+            transform: rotateY(180deg);
+         }
+
+         h2.result-area {
+            transform: translateY(10px);
          }
       </style>
    </head>
    <body>
       <div class="wrap">
-         <h3>Up-Down Game!</h3>
-         <div class="gameboard">
-            <div class="card1"></div>
-            <div class="card2"></div>
-         </div>
-         <div class="choice">
+         <h1>Up-Down Game</h1>
+         <section class="gameboard">
+            <div class="card-tray">
+               <div>첫번째 카드</div>
+               <div class="card"></div>
+            </div>
+            <div class="equal-sign result-area">?</div>
+            <div class="card-tray">
+               <div>두번째 카드</div>
+               <div class="card back"></div>
+            </div>
+         </section>
+         <section>
             <p>
                두번째 카드의 숫자는 <br />
                첫번째 카드의 숫자보다...
             </p>
-
-            <button onclick="clickResult('up')" id="maxbt">크다!</button>
-            <button onclick="clickResult('down')" id="minbt">작다!</button>
-         </div>
+            <div>
+               <button class="button" onclick="result(up,true)">크다!</button>
+               <button class="button" onclick="result(down,false)">작다!</button>
+            </div>
+            <h2 class="result-area"></h2>
+            <p class="result-area"></p>
+         </section>
       </div>
       <script>
-         // card1에서 1~9까지 랜덤한 숫자카드의 앞면을 출력
-         // card2에서 1~9까지 랜덤한 숫자카드의 뒷면을 출력
-         const cardNum1 = Math.floor(Math.random() * 9) + 1
-         const cardNum2 = Math.floor(Math.random() * 9) + 1
+         const cardNum = [Math.floor(Math.random() * 7) + 2]
+         let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+         nums = nums.filter((n) => n !== cardNum[0])
+         cardNum.push(nums[Math.floor(Math.random() * nums.length)])
 
-         const card1 = document.querySelector('.card1')
-         const card2 = document.querySelector('.card2')
+         const cards = document.querySelectorAll('.card')
+         const value = document.querySelectorAll('.result-area')
+         const button = document.querySelectorAll('.button')
+         cards[0].textContent = cardNum[0]
 
-         card1.textContent = cardNum1
-         card2.textContent = '?'
+         const up = () => (cardNum[0] < cardNum[1] ? [true, '<'] : [false, '>'])
+         const down = () => (cardNum[0] > cardNum[1] ? [true, '>'] : [false, '<'])
 
-         // 선택지 버튼 [작다]와 [크다]를 제시
+         function result(callback, name) {
+            for (let btn of button) btn.setAttribute('disabled', true)
+            name ? (button[0].className = 'button-color') : (button[1].className = 'button-color')
 
-         function clickResult(val) {
-            card2.textContent = cardNum2
-            if ((val = 'up')) {
-               if (cardNum1 < cardNum2) {
-               }
-            }
+            cards[1].style.transition = 'transform 0.5s'
+            cards[1].style.transform = 'rotateY(0deg)'
+
+            setTimeout(() => {
+               cards[1].textContent = cardNum[1]
+            }, 100)
+
+            setTimeout(() => {
+               value[0].textContent = callback()[1]
+            }, 400)
+
+            setTimeout(() => {
+               callback()[0] ? (value[1].textContent = 'You Win!😉') : (value[1].textContent = 'Game Over😅')
+               value[1].style.transition = 'transform 0.5s'
+               value[1].style.transform = 'translateY(-10px)'
+            }, 800)
+
+            setTimeout(() => {
+               value[2].innerHTML = `
+               <button onClick="window.location.reload()">재도전</button>
+               `
+            }, 1500)
          }
-
-         // 카드1과 비교한 카드2의 값을 예상해서 버튼을 클릭(이벤트)
-         // 카드2의 앞면을 출력하고 게임의 결과를 출력
       </script>
    </body>
 </html>
