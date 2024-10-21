@@ -24,6 +24,17 @@
          const op2 = document.querySelector('#op2')
          const selectBox = document.querySelector('#oper')
          const answer = document.querySelector('#answer')
+
+         selectBox.addEventListener('change', (event) => {
+            const op1Value = Number(op1.value)
+            const op2Value = Number(op2.value)
+
+            if (event.target.value === 'plus') {
+               answer.innerHTML = `${op1Value + op2Value}`
+            } else if (event.target.value === 'minus') {
+               answer.innerHTML = `${op1Value - op2Value}`
+            }
+         })
       </script>
    </body>
 </html>

@@ -8,6 +8,21 @@
    <body>
       <input type="text" id="myInput" placeholder="텍스트를 입력하세요" />
       <p></p>
-      <script></script>
+      <script>
+         const input = document.querySelector('#myInput')
+         const p = document.querySelector('p')
+         let count
+
+         input.addEventListener('focus', (event) => {
+            count = setInterval(() => {
+               const textcount = String(event.target.value).length
+               p.textContent = textcount
+            }, 50)
+         })
+
+         input.addEventListener('blur', (event) => {
+            clearInterval(count)
+         })
+      </script>
    </body>
 </html>

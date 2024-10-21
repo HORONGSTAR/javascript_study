@@ -8,6 +8,12 @@
    <body>
       <button id="backButton">이전 페이지로 이동</button>
 
-      <script></script>
+      <script>
+         const button = document.querySelector('#backButton')
+
+         button.addEventListener('click', (event) => {
+            history.back()
+         })
+      </script>
    </body>
 </html>

@@ -6,13 +6,14 @@
       <title>Document</title>
    </head>
    <body>
-      <button id="myButton">클릭하세요</button>
-      <script>
-         const button = document.querySelector('#myButton')
+      <button id="goButton" onclick="next()">다음 페이지</button>
 
-         button.addEventListener('click', () => {
-            alert('버튼이 클릭되었습니다!')
-         })
+      <script>
+         const button = document.querySelector('#backButton')
+
+         function next() {
+            location.href = './quiz3-2.html'
+         }
       </script>
    </body>
 </html>

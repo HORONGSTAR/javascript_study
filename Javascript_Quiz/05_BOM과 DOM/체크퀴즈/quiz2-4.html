@@ -8,6 +8,12 @@
    <body>
       <button id="doubleClickButton">더블 클릭하세요</button>
 
-      <script></script>
+      <script>
+         const clickEvent = document.querySelector('#doubleClickButton')
+
+         clickEvent.addEventListener('dblclick', () => {
+            alert('더블 클릭되었습니다!')
+         })
+      </script>
    </body>
 </html>

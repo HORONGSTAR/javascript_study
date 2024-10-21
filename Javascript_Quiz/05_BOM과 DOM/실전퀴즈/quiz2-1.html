@@ -43,6 +43,17 @@
          const pw = document.querySelector('#password')
          const idMsg = document.querySelector('.id-msg')
          const pwMsg = document.querySelector('.pw-msg')
+
+         button.addEventListener('click', (event) => {
+            const idLength = id.value.length
+            const pwLength = pw.value.length
+            if (idLength < 1) {
+               idMsg.style.display = 'block'
+            }
+            if (pwLength < 1) {
+               pwMsg.style.display = 'block'
+            }
+         })
       </script>
    </body>
 </html>

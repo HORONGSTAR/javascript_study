@@ -19,6 +19,12 @@
          const select = document.querySelector('select')
          const input = document.querySelector('input')
          const span = document.querySelector('span')
+
+         select.addEventListener('change', (event) => {
+            currentValue = String(input.value)
+            constValue = String(event.target.value)
+            span.innerHTML = `${currentValue * constValue}`
+         })
       </script>
    </body>
 </html>
