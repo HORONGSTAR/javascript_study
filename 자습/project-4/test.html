@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>-</title>
+      <script>
+         // 누적해서 곱하는 함수 작성
+
+         const multiplyAll /*함수이름*/ = function (a, b) /*시작숫자, 끝숫자*/ {
+            //a,b 사이의 모든 정수를 곱하는 함수
+            let output = 1 //시작값 1
+            for (let i = a; i <= b; i++) {
+               // ✂ 곱하는 과정 출력
+               console.log(`(output)${output} x (i)${i}`)
+
+               //i가 a부터 시작 b까지 반복
+               output = output * i //반복마다 값 곱하기
+
+               // ✂ 곱한 결과 출력
+               console.log(`= ${output}`)
+            }
+            return output //결과값으로 돌려즘
+         }
+
+         // ✂ 과정을 좀 더 쉽게 이해하기 위해 input값을 조정했어요!
+         console.log(multiplyAll(1, 5)) // 1 * 5 = 120
+      </script>
+   </head>
+   <body></body>
+</html>
