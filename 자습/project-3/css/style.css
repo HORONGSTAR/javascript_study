@@ -1,0 +1,73 @@
+a {
+   color: salmon;
+   text-decoration: none;
+}
+body {
+   margin: 0;
+   padding: 0;
+}
+
+div.wrap {
+   width: 400px;
+   margin: 0 auto;
+   padding: 20px;
+   text-align: center;
+   font-size: 28px;
+   font-family: 'Dongle', sans-serif;
+}
+
+section.gameboard {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+div.card {
+   min-width: 120px;
+   min-height: 180px;
+   background-color: salmon;
+   border-radius: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 80px;
+   font-weight: bold;
+   color: white;
+}
+
+div.equal-sign {
+   padding-top: 44px;
+   min-width: 70px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 60px;
+   font-weight: bold;
+   color: salmon;
+}
+button {
+   border: none;
+   border-radius: 4px;
+   background-color: lightgray;
+   width: 80px;
+   height: 42px;
+   font-size: 30px;
+   font-family: 'Dongle', sans-serif;
+}
+
+button:hover:not(:disabled) {
+   background-color: gray;
+}
+
+.button-color {
+   background-color: salmon;
+   color: #000;
+}
+
+.back {
+   transform: rotateY(180deg);
+}
+
+h2.result-area {
+   transform: translateY(10px);
+}
