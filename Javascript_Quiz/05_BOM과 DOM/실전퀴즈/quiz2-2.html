@@ -26,14 +26,18 @@
          const answer = document.querySelector('#answer')
 
          selectBox.addEventListener('change', (event) => {
-            const op1Value = Number(op1.value)
-            const op2Value = Number(op2.value)
+            let result = 0
+            var value = selectBox.options[selectBox.selectedIndex].value
 
-            if (event.target.value === 'plus') {
-               answer.innerHTML = `${op1Value + op2Value}`
-            } else if (event.target.value === 'minus') {
-               answer.innerHTML = `${op1Value - op2Value}`
+            switch (value) {
+               case 'plus':
+                  result = Number(op1.value) + Number(op2.value)
+                  break
+               case 'minus':
+                  result = Number(op1.value) + Number(op2.value)
+                  break
             }
+            answer.textContent = result
          })
       </script>
    </body>

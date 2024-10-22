@@ -45,14 +45,8 @@
          const pwMsg = document.querySelector('.pw-msg')
 
          button.addEventListener('click', (event) => {
-            const idLength = id.value.length
-            const pwLength = pw.value.length
-            if (idLength < 1) {
-               idMsg.style.display = 'block'
-            }
-            if (pwLength < 1) {
-               pwMsg.style.display = 'block'
-            }
+            !id.value ? (idMsg.style.display = 'block') : (idMsg.style.display = 'none')
+            !pw.value ? (pwMsg.style.display = 'block') : (pwMsg.style.display = 'none')
          })
       </script>
    </body>

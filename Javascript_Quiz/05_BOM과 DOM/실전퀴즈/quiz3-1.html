@@ -20,10 +20,20 @@
          const input = document.querySelector('input')
          const span = document.querySelector('span')
 
+         const calculate = () => {
+            span.textContent = (currentValue * constValue).toFixed(2)
+         }
+
          select.addEventListener('change', (event) => {
-            currentValue = String(input.value)
-            constValue = String(event.target.value)
-            span.innerHTML = `${currentValue * constValue}`
+            const options = event.currentTarget.options
+            const index = event.currentTarget.options.selectedIndex
+            constValue = Number(options[index].value)
+            calculate()
+         })
+
+         input.addEventListener('keyup', () => {
+            currentValue = Number(event.currentTarget.value)
+            calculate()
          })
       </script>
    </body>
