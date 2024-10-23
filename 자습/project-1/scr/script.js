@@ -36,10 +36,7 @@ function result(callback, name) {
 
    setTimeout(() => {
       value[2].innerHTML = `
-               
-               <button onClick="gameReplay()">재도전</button>
+               <button onClick="location.reload()">재도전</button>
                `
    }, 1500)
 }
-
-const gameReplay = () => (eventStart = false)
