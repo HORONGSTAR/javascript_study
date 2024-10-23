@@ -16,11 +16,12 @@
       <style>
          .wrap {
             margin: 30px auto;
-            width: 300px;
+            width: 400px;
             text-align: center;
             font-family: 'Gugi', sans-serif;
             font-weight: 400;
             font-style: normal;
+            overflow: hidden;
          }
 
          button {
@@ -35,7 +36,7 @@
          }
 
          .gameBoard {
-            width: 300px;
+            width: 100%;
             height: 200px;
             display: flex;
             justify-content: center;
@@ -49,7 +50,7 @@
          }
 
          ul {
-            width: 300px;
+            width: 100%;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -74,15 +75,20 @@
          }
 
          input {
-            padding: 10px 20px;
-            width: 80px;
+            text-align: center;
+            font-size: 24px;
+            padding: 10px 10px;
+            width: 100px;
             margin: 0 10px;
             border: none;
             border-bottom: 2px solid #222;
          }
          input:focus {
-            border: none;
-            background-color: #eee;
+            outline: none;
+         }
+
+         .card5 {
+            transform: rotateY(180deg);
          }
       </style>
    </head>
@@ -99,7 +105,13 @@
          <button class="startBtn" onclick="gameStart()">시작하기</button>
          <div class="resultBoard">
             <label for="result" class="visually-hidden">정답</label
-            ><input type="text" id="result" />
+            ><input
+               autofocus
+               onkeypress="inputEnter(event)"
+               type="text"
+               id="result"
+               maxlength="5"
+            />
             <button onclick="getScore()">입력</button>
          </div>
       </div>
@@ -112,8 +124,6 @@
          const input = document.querySelector('input')
          let score = 0
          let result
-
-         input.addEventListener('keyup', (event) => {})
 
          function gameStart() {
             ul.textContent = ''
@@ -143,7 +153,12 @@
 
             cards.forEach((card, idx) => {
                const li = document.createElement('li')
-               idx !== 4 ? (li.innerHTML = card) : (li.innerHTML = '?')
+               li.className = `card${idx + 1}`
+               if (idx === 4) {
+                  li.innerHTML = '⸮​​'
+               } else {
+                  li.innerHTML = card
+               }
                ul.appendChild(li)
             })
             levelBoard.style.display = 'block'
@@ -156,11 +171,25 @@
             return
          }
 
+         function inputEnter(event) {
+            if (event.key == 'Enter') {
+               getScore()
+            }
+         }
+
          function getScore() {
             if (input.value == result) {
-               score += 1
-               input.value = ''
-               gameStart()
+               const resultCard = document.querySelector('.card5')
+               resultCard.style.transition = 'transform 0.5s'
+               resultCard.style.transform = 'rotateY(0deg)'
+               const loding1 = setTimeout(() => {
+                  resultCard.innerHTML = result
+               }, 100)
+               const loding2 = setTimeout(() => {
+                  score += 1
+                  input.value = ''
+                  gameStart()
+               }, 1000)
             } else {
                input.value = ''
                scoreBoard.style.display = 'none'
