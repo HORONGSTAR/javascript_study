@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         // promise의 then도 코드양이 늘어나면 가독성이 떨어지므로, async와 await를 함께 사용합니다.
+
+         console.log('안녕하세요')
+
+         function asynFunc() {
+            return new Promise((resolve, reject) => {
+               setTimeout(() => {
+                  console.log('저는')
+                  resolve('하니입니다.')
+               }, 1000)
+            })
+         }
+
+         // asynFunc().then((result) => {
+         //    console.log(result)
+         // })
+
+         async function runAsynFunc() {
+            try {
+               const result = await asynFunc()
+               console.log(result)
+            } catch (error) {
+               console.error(error)
+            }
+         }
+
+         runAsynFunc()
+      </script>
+   </body>
+</html>

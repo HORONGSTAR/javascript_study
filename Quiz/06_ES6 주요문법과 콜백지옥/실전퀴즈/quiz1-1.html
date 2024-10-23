@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         function result() {
+            return new Promise((resolve) => {
+               setTimeout(() => {
+                  console.log('안녕하세요')
+                  resolve('저는')
+               }, 1000)
+            })
+         }
+
+         result()
+            .then((resolve) => {
+               console.log(resolve)
+               return '하니입니다.'
+            })
+            .then((resolve) => {
+               console.log(resolve)
+            })
+      </script>
+   </body>
+</html>

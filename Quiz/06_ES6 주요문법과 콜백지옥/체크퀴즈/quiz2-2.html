@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         //콜백함수는 함수 자체를 다른 함수의 매개변수로 사용되는 함수를 의미합니다. 함수가 실행되는 순서를 조정하기 위해 사용하며, 함수의 내용 중 일부를 빼내서 별개의 함수로 만들거나, 반복되는 내용의 함수과정을 다른 함수에도 이용할 수 있도록 쓰기도 합니다.
+
+         console.log('안녕하세요')
+
+         function result(callback) {
+            setTimeout(() => {
+               console.log('저는')
+               callback()
+            }, 1000)
+         }
+         result(() => {
+            console.log('하니입니다.')
+         })
+      </script>
+   </body>
+</html>

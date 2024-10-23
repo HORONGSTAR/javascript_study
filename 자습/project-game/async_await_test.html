@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         // Promise 예시코드
+
+         // asyncTest(index) : 1초 뒤에 실행된 순서를 출력해주는 함수
+         function asyncTest(index) {
+            return new Promise((resolve) => {
+               setTimeout(() => {
+                  resolve(`${index}번째 출력입니다.`)
+               }, 1000)
+            })
+         }
+
+         async function runAsyncTest() {
+            try {
+               let result
+               result = await asyncTest(1) //asyncTest(index)를 사용한 첫번째 실행
+               console.log(result)
+               result = await asyncTest(2) //asyncTest(index)를 사용한 두번째 실행
+               console.log(result)
+               result = await asyncTest(3) //asyncTest(index)를 사용한 세번째 실행
+               console.log(result)
+            } catch (error) {
+               console.error(error)
+            }
+         }
+
+         // asyncTest(index)를 사용하여 각각 출력마다 대기 시간을 줌
+         runAsyncTest()
+      </script>
+   </body>
+</html>
