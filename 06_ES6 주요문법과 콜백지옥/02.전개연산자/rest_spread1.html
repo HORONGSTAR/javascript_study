@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         // 얕은 복사
+         const obj1 = ['우유', '식빵']
+         const obj2 = obj1
+         obj1.push('고구마')
+         obj1.push('토마토')
+
+         console.log(obj1)
+         console.log(obj2)
+
+         // 깊은 복사
+         const obj3 = ['우유', '식빵']
+         const obj4 = [...obj3]
+         obj3.push('고구마')
+         obj3.push('토마토')
+
+         console.log(obj3)
+         console.log(obj4)
+      </script>
+   </body>
+</html>

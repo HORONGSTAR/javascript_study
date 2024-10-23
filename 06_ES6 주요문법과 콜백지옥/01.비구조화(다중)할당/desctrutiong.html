@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         // es6 버전의 비구조화 할당 이용
+
+         //JSON
+         const contents = {
+            familyName: '이',
+            name: '영희',
+            age: '22',
+         }
+         //  let familyName = contents.familyName
+         //  let name = contents.name
+         //  let age = contents.age
+         var { familyName, name, age } = contents
+         var { familyName, name: otherName, age: otherage } = contents
+         console.log(familyName, name, age)
+         console.log(familyName, otherName, otherage)
+
+         //Array
+         const arr = ['광희', '지수', '영철', 20]
+         //  let value1 = arr[0]
+         //  let value2 = arr[1]
+         //  let value3 = arr[2]
+         let [value1, value2, value3] = arr
+         console.log(value1, value2, value3)
+      </script>
+   </body>
+</html>

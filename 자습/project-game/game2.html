@@ -87,8 +87,15 @@
             outline: none;
          }
 
+         .card1,
+         .card2,
+         .card3,
+         .card4 {
+            transform: translateY(-20px);
+         }
+
          .card5 {
-            transform: rotateY(180deg);
+            transform: translateY(-20px) rotateY(180deg);
          }
       </style>
    </head>
@@ -168,7 +175,39 @@
             resultBoard.style.display = 'block'
             startBtn.style.display = 'none'
             result = cards[4]
-            return
+            cardSetting()
+         }
+
+         function cardSetting() {
+            const card1 = document.querySelector('.card1')
+            const card2 = document.querySelector('.card2')
+            const card3 = document.querySelector('.card3')
+            const card4 = document.querySelector('.card4')
+            const card5 = document.querySelector('.card5')
+
+            setTimeout(() => {
+               card1.style.transition = 'transform 0.5s'
+               card1.style.transform = 'translateY(0px)'
+            }, 50)
+
+            setTimeout(() => {
+               card2.style.transition = 'transform 0.5s'
+               card2.style.transform = 'translateY(0px)'
+            }, 100)
+
+            setTimeout(() => {
+               card3.style.transition = 'transform 0.5s'
+               card3.style.transform = 'translateY(0px)'
+            }, 150)
+
+            setTimeout(() => {
+               card4.style.transition = 'transform 0.5s'
+               card4.style.transform = 'translateY(0px)'
+            }, 200)
+            setTimeout(() => {
+               card5.style.transition = 'transform 0.5s'
+               card5.style.transform = 'translateY(0px) rotateY(180deg)'
+            }, 200)
          }
 
          function inputEnter(event) {
@@ -179,22 +218,31 @@
 
          function getScore() {
             if (input.value == result) {
-               const resultCard = document.querySelector('.card5')
-               resultCard.style.transition = 'transform 0.5s'
-               resultCard.style.transform = 'rotateY(0deg)'
-               const loding1 = setTimeout(() => {
-                  resultCard.innerHTML = result
-               }, 100)
-               const loding2 = setTimeout(() => {
+               const card5 = document.querySelector('.card5')
+               card5.style.transition = 'transform 0.5s'
+               card5.style.transform = 'rotateY(0deg)'
+               setTimeout(() => {
                   score += 1
+                  card5.innerHTML = result
+               }, 100)
+               setTimeout(() => {
                   input.value = ''
-                  gameStart()
+                  score < 40 ? gameStart() : gameClear()
                }, 1000)
             } else {
                input.value = ''
                scoreBoard.style.display = 'none'
                gameOver()
             }
+         }
+
+         function gameOver() {
+            ul.textContent = 'Game Clear!'
+            startBtn.textContent = '다시하기'
+            startBtn.style.display = 'inline'
+            resultBoard.style.display = 'none'
+            score = 0
+            return
          }
 
          function gameOver() {
