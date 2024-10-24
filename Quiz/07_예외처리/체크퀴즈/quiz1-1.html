@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         let str = null
+
+         //str의 값이 null이라 length를 읽어낼 수 없기 때문에
+         try {
+            console.log(str.length)
+         } catch {
+            console.log('str값은 사용할 수 없습니다.')
+         }
+      </script>
+   </body>
+</html>
