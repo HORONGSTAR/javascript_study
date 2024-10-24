@@ -4,23 +4,45 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
-
-      <style></style>
+      <style>
+         button.add {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+         }
+      </style>
    </head>
    <body>
-      <div>
-         <h3>🐌달팽이 경주🐌</h3>
-         <h4>게임에 참여할 사람의 이름은?</h4>
+      <h3>🐌달팽이 경주🐌</h3>
+      <h4>게임에 참여할 사람의 이름은?</h4>
+      <div class="wrap">
          <div class="userBoard">
-            <div><label for="userName1">플레이어1</label> <input type="text" id="userName1" /></div>
-            <div><label for="userName2">플레이어2</label> <input type="text" id="userName2" /></div>
+            <div><label for="userName1">Player1</label> <input type="text" id="userName1" /></div>
+            <div><label for="userName2">Player2</label> <input type="text" id="userName2" /></div>
          </div>
-         <div><button class="addButton">참여 인원 추가하기</button></div>
+         <div class="add">
+            <button class="add" onclick="addUser()"><span>+</span> 참여 인원 추가하기</button>
+         </div>
       </div>
       <script>
          const userBoard = document.querySelector('.userBoard')
-         const addButton = document.querySelector('.addButton')
-         function addUser() {}
+         const addDiv = document.querySelector('div.add')
+         const addBtn = document.querySelector('button.add')
+         const h5 = document.querySelector('h5')
+         let userNum = 2
+
+         function addUser() {
+            if (userNum >= 5) {
+               addDiv.innerHTML = `<p>최대 인원이 다 찼어요!</p>`
+               return
+            }
+            userNum++
+            const div = document.createElement('div')
+            div.innerHTML = `
+               <label for="userName${userNum}">Player${userNum}</label>
+               <input type="text" id="userName${userNum}" />`
+            userBoard.appendChild(div)
+         }
       </script>
    </body>
 </html>

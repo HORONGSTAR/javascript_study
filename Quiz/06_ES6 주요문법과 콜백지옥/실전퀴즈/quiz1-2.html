@@ -25,9 +25,11 @@
 
          asyncTask()
             .then((result) => {
+               // promise 상태가 이행으로 바뀌면 then 실행
                console.log(result)
             })
             .catch((error) => {
+               // promise 상태가 거부로 변경되면 catch 실행
                console.error(error)
             })
       </script>

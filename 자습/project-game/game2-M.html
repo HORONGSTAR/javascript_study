@@ -58,7 +58,7 @@
             justify-content: space-around;
             align-items: center;
          }
-         li {
+         .card {
             width: 50px;
             height: 70px;
             display: flex;
@@ -67,10 +67,13 @@
             font-size: 30px;
             color: white;
             background-color: royalblue;
+            border: none;
             border-radius: 10px;
+            transform: translateY(-20px);
          }
 
-         li:last-of-type {
+         .card:nth-of-type(5) {
+            transform: translateY(-20px) rotateY(180deg);
             background-color: salmon;
          }
 
@@ -86,31 +89,20 @@
          input:focus {
             outline: none;
          }
-
-         .card1,
-         .card2,
-         .card3,
-         .card4 {
-            transform: translateY(-20px);
-         }
-
-         .card5 {
-            transform: translateY(-20px) rotateY(180deg);
-         }
       </style>
    </head>
    <body>
       <!-- 사칙연산 게임 만들기 -->
       <div class="wrap">
-         <h4 class="levelBoard"></h4>
-         <p class="scoreBoard"></p>
-         <div class="gameBoard">
+         <h4 class="levelBoard board"></h4>
+         <p class="scoreBoard board"></p>
+         <div class="gameBoard board">
             <ul>
                <h3>사칙연산 게임!</h3>
             </ul>
          </div>
          <button class="startBtn" onclick="gameStart()">시작하기</button>
-         <div class="resultBoard">
+         <div class="resultBoard board">
             <label for="result" class="visually-hidden">정답</label
             ><input
                autofocus
@@ -123,9 +115,8 @@
          </div>
       </div>
       <script>
-         const levelBoard = document.querySelector('.levelBoard')
-         const scoreBoard = document.querySelector('.scoreBoard')
-         const resultBoard = document.querySelector('.resultBoard')
+         const board = document.querySelectorAll('.board')
+         const [levelBoard, scoreBoard, gameBoard, resultBoard] = board
          const startBtn = document.querySelector('.startBtn')
          const ul = document.querySelector('ul')
          const input = document.querySelector('input')
@@ -160,54 +151,47 @@
 
             cards.forEach((card, idx) => {
                const li = document.createElement('li')
-               li.className = `card${idx + 1}`
                if (idx === 4) {
+                  li.className = 'card'
                   li.innerHTML = '⸮​​'
                } else {
+                  li.className = 'card cardResult'
                   li.innerHTML = card
                }
                ul.appendChild(li)
             })
             levelBoard.style.display = 'block'
-            levelBoard.innerHTML = `Level ${Math.floor(score * 0.1) + 1}`
             scoreBoard.style.display = 'block'
-            scoreBoard.innerHTML = `Score : ${score}`
             resultBoard.style.display = 'block'
+            levelBoard.innerHTML = `Level ${Math.floor(score * 0.1) + 1}`
+            scoreBoard.innerHTML = `Score : ${score}`
             startBtn.style.display = 'none'
             result = cards[4]
             cardSetting()
          }
 
-         function cardSetting() {
-            const card1 = document.querySelector('.card1')
-            const card2 = document.querySelector('.card2')
-            const card3 = document.querySelector('.card3')
-            const card4 = document.querySelector('.card4')
-            const card5 = document.querySelector('.card5')
+         function delay(cardNum, trfValue) {
+            return new Promise((resolve) => {
+               setTimeout(() => {
+                  cardNum.style.transition = 'transform 0.5s'
+                  cardNum.style.transform = trfValue
+                  resolve()
+               }, 50)
+            })
+         }
 
-            setTimeout(() => {
-               card1.style.transition = 'transform 0.5s'
-               card1.style.transform = 'translateY(0px)'
-            }, 50)
-
-            setTimeout(() => {
-               card2.style.transition = 'transform 0.5s'
-               card2.style.transform = 'translateY(0px)'
-            }, 100)
-
-            setTimeout(() => {
-               card3.style.transition = 'transform 0.5s'
-               card3.style.transform = 'translateY(0px)'
-            }, 150)
-
-            setTimeout(() => {
-               card4.style.transition = 'transform 0.5s'
-               card4.style.transform = 'translateY(0px)'
-            }, 200)
-            setTimeout(() => {
-               card5.style.transition = 'transform 0.5s'
-               card5.style.transform = 'translateY(0px) rotateY(180deg)'
-            }, 200)
+         async function cardSetting() {
+            const cards = document.querySelectorAll('li')
+            const [card1, card2, card3, card4, card5] = cards
+            try {
+               await delay(card1, 'translateY(0px)')
+               await delay(card2, 'translateY(0px)')
+               await delay(card3, 'translateY(0px)')
+               await delay(card4, 'translateY(0px)')
+               await delay(card5, 'translateY(0px) rotateY(180deg)')
+            } catch (error) {
+               console.error(error)
+            }
          }
 
          function inputEnter(event) {
@@ -218,12 +202,12 @@
 
          function getScore() {
             if (input.value == result) {
-               const card5 = document.querySelector('.card5')
-               card5.style.transition = 'transform 0.5s'
-               card5.style.transform = 'rotateY(0deg)'
+               const resultCard = document.querySelector('.cardResult')
+               resultCard.style.transition = 'transform 0.5s'
+               resultCard.style.transform = 'rotateY(0deg)'
                setTimeout(() => {
                   score += 1
-                  card5.innerHTML = result
+                  resultCard.innerHTML = result
                }, 100)
                setTimeout(() => {
                   input.value = ''

@@ -9,7 +9,8 @@
       <script>
          const originalArray = [1, 2, 3]
          // const copiedArray = originalArray
-         // copiedArray가 originalArray를 얕은 복사를 했기 때문입니다. originalArray와 다른 저장소를 생성하는 깊은 복사를 해야합니다.
+         // copiedArray가 originalArray와 같은 메모리 주소를 가지게 되는 얕은 복사를 했기 때문입니다. originalArray와 다른 메모리주소를 생성하는 깊은 복사를 해야합니다.
+         //스택에는 주소가 저장되어 있고 실제 같은 메모리 주소를 따라 힙으로가야 해당 주소에 저장이 됩니다.
          const copiedArray = [...originalArray]
 
          copiedArray.push(4)

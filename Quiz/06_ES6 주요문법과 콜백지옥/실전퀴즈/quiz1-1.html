@@ -7,10 +7,11 @@
    </head>
    <body>
       <script>
+         console.log('안녕하세요')
+
          function result() {
             return new Promise((resolve) => {
                setTimeout(() => {
-                  console.log('안녕하세요')
                   resolve('저는')
                }, 1000)
             })
