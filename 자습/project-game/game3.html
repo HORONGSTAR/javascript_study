@@ -11,6 +11,9 @@
          rel="stylesheet"
       />
       <style>
+         body {
+            background-color: antiquewhite;
+         }
          div.wrap {
             margin: 50px auto;
             min-width: 500px;
@@ -30,12 +33,18 @@
             margin: 20px 0;
          }
 
+         section.setting > span:nth-of-type(3) {
+            display: none;
+         }
+
          button {
             padding: 5px;
             border: none;
             border-radius: 5px;
             font: inherit;
+            background-color: burlywood;
          }
+
          .warning {
             display: none;
             color: crimson;
@@ -51,6 +60,18 @@
             border: none;
             border-bottom: 1px solid black;
             font: inherit;
+            background-color: transparent;
+         }
+         .gameBoard > div {
+            margin-top: 20px;
+            width: 300px;
+            height: 50px;
+            line-height: 40px;
+            border-bottom: 1px solid black;
+         }
+
+         .player {
+            transform: translateX(0px);
          }
       </style>
    </head>
@@ -69,42 +90,51 @@
             </div>
          </section>
          <section class="setting">
-            <span><button onclick="addUser(true)">인원 추가하기</button></span>
-            <button onclick="addUser(false)">삭제</button>
-            <button onclick="start()">등록 완료!</button>
+            <span><button onclick="setUser()">등록 완료!</button></span>
+            <span><button onclick="addUser(true)">인원 추가</button></span>
+            <span><button onclick="addUser(false)">삭제</button></span>
          </section>
          <section class="gameBoard"></section>
       </div>
       <script>
          const userBoard = document.querySelector('.userBoard')
-         const addDiv = document.querySelector('.setting > span')
-         const h5 = document.querySelector('h5')
-         const input = document.querySelectorAll('input')
-         const p = document.querySelectorAll('.warning')
+         const gameBoard = document.querySelector('.gameBoard')
+         const [startBtn, addBtn, delBtn] = document.querySelectorAll('.setting > span')
+
          let userNum = 2
 
          function addUser(add) {
             if (add) {
-               userNum++
-               const div = document.createElement('div')
-               div.className = `user${userNum}`
-               div.innerHTML = `
-               <label for="user${userNum}">${userNum}번째</label>
-               <input type="text" id="user${userNum}" maxlength="10"/><p class="warning"></p>`
-               userBoard.appendChild(div)
-               if (userNum >= 5) {
-                  addDiv.innerHTML = `<p>최대 인원이 다 찼어요!</p>`
+               if (userNum >= 10) {
+                  addBtn.innerHTML = `<p>최대 인원이 다 찼어요!</p>`
                   return
+               } else {
+                  userNum++
+                  const div = document.createElement('div')
+                  div.className = `user${userNum}`
+                  div.innerHTML = `
+                  <label for="user${userNum}">${userNum}번째</label>
+                  <input type="text" id="user${userNum}" maxlength="10"/><p class="warning"></p>`
+                  delBtn.style.display = 'inline'
+                  userBoard.appendChild(div)
                }
             } else {
-               addDiv.innerHTML = `<button onclick="addUser(true)">인원 추가하기</button>`
-               const userDiv = document.querySelector(`.user${userNum}`)
-               userBoard.removeChild(userDiv)
-               userNum--
+               if (userNum > 2) {
+                  addBtn.innerHTML = `<button onclick="addUser(true)">인원 추가하기</button>`
+                  const userDiv = document.querySelector(`.user${userNum}`)
+                  userBoard.removeChild(userDiv)
+                  if (userNum === 3) {
+                     delBtn.style.display = 'none'
+                  }
+                  userNum--
+               }
             }
+            return
          }
 
          function setUser() {
+            const input = document.querySelectorAll('input')
+            const p = document.querySelectorAll('.warning')
             const inputList = [...input]
             const pList = [...p]
             const valueList = inputList.map((input) => input.value)
@@ -113,26 +143,49 @@
                   if (idx === valueList.indexOf(value)) {
                      pList[idx].style.display = 'none'
                      inputList[idx].style.borderBottom = '1px solid black'
-
-                     return value.value
+                     return value
                   } else {
                      pList[idx].textContent = '중복되지 않는 이름을 사용해주세요.'
                      pList[idx].style.display = 'block'
                      inputList[idx].style.borderBottom = '1px solid crimson'
-                     console.log(inputList[idx])
+                     return false
                   }
                } else {
                   pList[idx].style.display = 'block'
                   inputList[idx].style.borderBottom = '1px solid crimson'
                   pList[idx].textContent = '이름을 입력해주세요.'
+                  return false
                }
             })
-            return userList
+            if (userList.includes(false)) {
+               return
+            }
+            start(userList)
          }
 
-         function start() {
-            const userList = setUser()
-            userList.forEach((user) => {})
+         async function start(userList) {
+            userList.forEach((userName, idx) => {
+               const div = document.createElement('div')
+               div.innerHTML = `
+               <div class='player'>${userName}🐌</div>`
+               gameBoard.appendChild(div)
+            })
+            const players = document.querySelectorAll('.player')
+
+            try {
+               await run(5, players[0])
+            } catch (errer) {
+               console.error(errer)
+            }
+         }
+
+         function run(time, player) {
+            return new Promise((resolve) => {
+               setTimeout((time) => {
+                  player.style.transition = `transform ${time}s`
+                  player.style.transform = 'translateX(400px)'
+               }, time * 100)
+            })
          }
       </script>
    </body>
