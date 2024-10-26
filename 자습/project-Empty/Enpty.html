@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <style>
+         div.wrap {
+            display: flex;
+            flex-direction: column;
+         }
+         div.wrap > div {
+            margin: 10px;
+         }
+      </style>
+   </head>
+   <body>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script script type="text/javascript">
+         google.charts.load('current', { packages: ['corechart'] })
+         google.charts.setOnLoadCallback(getSheetData)
+         function getSheetData() {
+            const sheetId = '1jj3JIzrAJJ2pj6Qdak8M1_qwFr9UR32N_oGp17oT1UQ'
+            const sheetRange = 'gid=1057916490'
+            var query = new google.visualization.Query(
+               `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?${sheetRange}`
+            )
+            query.send(DataQuery)
+         }
+         const arr = [1, 2]
+
+         function DataQuery(response) {
+            var originData = response.getDataTable()
+            let datas = originData.Wf
+
+            datas = datas.map((data) => data.c).map((data) => data.filter((data) => data))
+            datas.map((data) => (data.length > 1 ? data.pop() : (data = data)))
+            datas = datas.map((data) => data.map((data) => data.v))
+
+            const wrap = document.querySelector('.wrap')
+
+            datas.forEach((data) => {
+               const div = document.createElement('div')
+               div.innerHTML = data
+               wrap.appendChild(div)
+            })
+         }
+      </script>
+      <div class="wrap"></div>
+   </body>
+</html>
