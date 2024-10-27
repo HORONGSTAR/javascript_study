@@ -4,17 +4,32 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
+      <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+         crossorigin="anonymous"
+      />
+
       <style>
-         div.wrap {
-            display: flex;
-            flex-direction: column;
+         .wrap {
+            margin: 0 auto;
+            padding: 0;
+            font-size: 14px;
          }
-         div.wrap > div {
-            margin: 10px;
+
+         .card {
+            margin: 40px 0;
          }
       </style>
    </head>
    <body>
+      <div class="wrap container-md"></div>
+      <script
+         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+         crossorigin="anonymous"
+      ></script>
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       <script script type="text/javascript">
          google.charts.load('current', { packages: ['corechart'] })
@@ -27,25 +42,70 @@
             )
             query.send(DataQuery)
          }
-         const arr = [1, 2]
 
          function DataQuery(response) {
+            const wrap = document.querySelector('.wrap')
             var originData = response.getDataTable()
             let datas = originData.Wf
 
-            datas = datas.map((data) => data.c).map((data) => data.filter((data) => data))
-            datas.map((data) => (data.length > 1 ? data.pop() : (data = data)))
-            datas = datas.map((data) => data.map((data) => data.v))
+            datas = datas
+               .map((data) => data.c)
+               .map((data) => data.filter((dt) => dt))
+               .map((data) => data.map((dt) => dt.v))
+               .map((data) => data.slice(0, -1))
+               .filter((data) => data.length > 1)
+               .map((data) => arrDivide(data, data.length / 4))
 
-            const wrap = document.querySelector('.wrap')
+            const cards = arrDivide(datas, 12)
 
-            datas.forEach((data) => {
+            cards.forEach((card) => {
                const div = document.createElement('div')
-               div.innerHTML = data
+               div.className = 'card-group'
+               let content = ''
+               for (let i = 0; i < 4; i++) {
+                  if (card[0][i][0].length > 20) {
+                     card[0][
+                        i
+                     ][0] = `<h5 class="card-title" style="letter-spacing:-1px;font-size:17px;line-height: 25px;">${card[0][i][0]}</h5>`
+                  } else {
+                     card[0][i][0] = `<h5 class="card-title">${card[0][i][0]}</h5>`
+                  }
+                  console.log(card[0][i][0])
+                  content += '<div class="card"><div class="card-body">'
+                  content += `
+                     ${card[0][i]}
+                     <p class="card-text">${card[1][i]}<br>
+                        <hr>
+                        ${card[2][i][0]} <small class="text-body-secondary">${card[2][i][1]}</small><br>
+                        <i>${card[3][i]}</i><br>
+                        <small class="text-body-secondary">${card[4][i][0]}</small> ${card[4][i][1]}<br>
+                        <small class="text-body-secondary">${card[5][i][0]}</small> ${card[5][i][1]}<br>
+                        <small class="text-body-secondary">${card[6][i][0]}</small> ${card[6][i][1]}<br>
+                        ${card[7][i]}<br>
+                        <small class="text-body-secondary">${card[8][i][0]}</small> ${card[8][i][1]}
+                        <small class="text-body-secondary">${card[8][i][2]}</small> ${card[8][i][3]}<br>
+                        <small class="text-body-secondary">${card[9][i][0]}</small> ${card[9][i][1]}
+                        <small class="text-body-secondary">${card[9][i][2]}</small> ${card[9][i][3]}<br>
+                        <small class="text-body-secondary">${card[10][i][0]}</small> ${card[10][i][1]}
+                        <small class="text-body-secondary">${card[10][i][2]}</small> ${card[10][i][3]}</p></div>
+                        <div class="card-footer"><small class="text-body-secondary">${card[11][i]}</small></div>
+                     `
+                  content += '</div>'
+               }
+               div.innerHTML = content
                wrap.appendChild(div)
             })
          }
+
+         function arrDivide(arr, num) {
+            var newArr = []
+            for (let i = 0; i < arr.length; i += num) {
+               let value
+               value = arr.slice(i, i + num)
+               newArr.push(value)
+            }
+            return newArr
+         }
       </script>
-      <div class="wrap"></div>
    </body>
 </html>
