@@ -57,6 +57,13 @@ main .container ul.movie-info li {
    padding-right: 13px;
 }
 
+.ellipsis {
+   width: 100%; /* 필요한 너비를 설정(필수) */
+   white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정(필수) */
+   overflow: hidden; /* 넘치는 텍스트를 숨김(필수) */
+   text-overflow: ellipsis; /* 넘치는 텍스트를 말줄임표로 표시(필수) */
+}
+
 /* footer */
 footer {
    height: 100px;
@@ -64,7 +71,31 @@ footer {
    background-color: #f2f2f2;
 }
 
+.series .img-box {
+   padding: 10px;
+}
+
 /* 미디어쿼리 */
+
+@media (min-width: 992px) {
+   .series .img-box {
+      width: 35%;
+   }
+
+   .series .text-box {
+      width: 65%;
+   }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+   .series .img-box {
+      width: 45%;
+   }
+
+   .series .text-box {
+      width: 55%;
+   }
+}
 
 @media (min-width: 576px) and (max-width: 767px) {
    .col-sm-9 {
