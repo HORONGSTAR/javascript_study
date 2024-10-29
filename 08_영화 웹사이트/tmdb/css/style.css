@@ -5,6 +5,7 @@ body {
    margin: 0;
    padding: 0;
    font-size: 0.9em;
+   font-family: Pretendard, sans-serif;
 }
 
 ul {
@@ -58,10 +59,36 @@ main .container ul.movie-info li {
 }
 
 .ellipsis {
-   width: 100%; /* 필요한 너비를 설정(필수) */
-   white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정(필수) */
-   overflow: hidden; /* 넘치는 텍스트를 숨김(필수) */
-   text-overflow: ellipsis; /* 넘치는 텍스트를 말줄임표로 표시(필수) */
+   width: 100%;
+   word-break: break-word;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3;
+   line-clamp: 3;
+   -webkit-box-orient: vertical;
+}
+
+.btn-outline-secondary {
+   padding: 2px 6px;
+   margin: 2px;
+   font-size: 0.8em;
+}
+
+.seriesDetail ul {
+   margin-bottom: 10px;
+}
+
+.seriesDetail li {
+   padding: 5px 0;
+}
+
+.seasons .text-bg-light:hover {
+   background-color: #f5fafd !important;
+}
+
+.seasons .text-bg-light:hover .list-group-item {
+   text-decoration: underline;
 }
 
 /* footer */
@@ -71,29 +98,37 @@ footer {
    background-color: #f2f2f2;
 }
 
-.series .img-box {
-   padding: 10px;
-}
-
 /* 미디어쿼리 */
-
-@media (min-width: 992px) {
-   .series .img-box {
-      width: 35%;
-   }
-
-   .series .text-box {
-      width: 65%;
-   }
-}
 
 @media (min-width: 768px) and (max-width: 991px) {
    .series .img-box {
-      width: 45%;
+      width: 40%;
    }
 
    .series .text-box {
-      width: 55%;
+      padding: 2px;
+      width: 60%;
+   }
+
+   .series .text-box p {
+      margin: 0;
+   }
+   .ellipsis {
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+   }
+   .hashtag-ellipsis {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+   }
+   .seasons .col-sm-3 {
+      width: 33.3%;
+   }
+
+   .seriesDetail li {
+      padding: 2px 0;
    }
 }
 
@@ -108,6 +143,10 @@ footer {
       width: 33.3%;
    }
 
+   .rounded-start {
+      border-radius: 5px 5px 0px 0px !important;
+   }
+
    main .container ul.movie-info {
       display: initial; /* flex 해제 */
    }
@@ -115,10 +154,24 @@ footer {
    main .container ul.movie-info li {
       padding-bottom: 10px;
    }
+
+   .seasons .col-sm-3 {
+      width: 50%;
+   }
+   .seriesDetail li {
+      padding: 2px 0;
+   }
 }
 
 @media (max-width: 575px) {
    .col-sm-2 {
       width: 50%;
+   }
+}
+
+@media (max-width: 575px) {
+   .rounded-start {
+      border-radius: 5px !important;
+      margin: 5px;
    }
 }
