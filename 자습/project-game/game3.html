@@ -6,10 +6,7 @@
       <title>달팽이 경주</title>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-         href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
-         rel="stylesheet"
-      />
+      <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet" />
       <style>
          body {
             background-color: antiquewhite;
@@ -71,15 +68,23 @@
          }
 
          .player {
+            height: 100%;
             transform: translateX(0px);
+            display: flex;
+            align-items: center;
+         }
+
+         .sesult {
+            padding: 0 5px;
+            font-size: 12px;
          }
       </style>
    </head>
    <body>
       <div class="wrap">
+         <h1>🌼달팽이 경주🌼</h1>
+         <h4>게임에 참여할 사람의 이름은?</h4>
          <section class="userBoard">
-            <h1>🐌달팽이 경주🐌</h1>
-            <h4>게임에 참여할 사람의 이름은?</h4>
             <div class="user1">
                <label for="user1">1번째</label> <input type="text" id="user1" maxlength="10" />
                <p class="warning"></p>
@@ -95,9 +100,15 @@
             <span><button onclick="addUser(false)">삭제</button></span>
          </section>
          <section class="gameBoard"></section>
+         <div class="replay"></div>
       </div>
       <script>
          const userBoard = document.querySelector('.userBoard')
+         const h4 = document.querySelector('h4')
+         const replay = document.querySelector('.replay')
+
+         const setting = document.querySelector('.setting')
+
          const gameBoard = document.querySelector('.gameBoard')
          const [startBtn, addBtn, delBtn] = document.querySelectorAll('.setting > span')
 
@@ -163,29 +174,59 @@
             start(userList)
          }
 
-         async function start(userList) {
+         async function start(user) {
+            const userList = user
             userList.forEach((userName, idx) => {
                const div = document.createElement('div')
                div.innerHTML = `
                <div class='player'>${userName}🐌</div>`
                gameBoard.appendChild(div)
             })
-            const players = document.querySelectorAll('.player')
-
+            const nameLabel = document.querySelectorAll('.player')
             try {
-               await run(5, players[0])
+               await run(nameLabel, userList)
             } catch (errer) {
                console.error(errer)
             }
          }
 
-         function run(time, player) {
+         function run(nameLabel, userList) {
             return new Promise((resolve) => {
-               setTimeout((time) => {
-                  player.style.transition = `transform ${time}s`
-                  player.style.transform = 'translateX(400px)'
-               }, time * 100)
+               userBoard.style.display = 'none'
+               setting.style.display = 'none'
+               h4.textContent = '게임시작!'
+               const nameLabels = nameLabel
+               const players = userList
+               const scores = randomNum(5, 10, players.length)
+               const ttfIdx = randomNum(0, 5, 5)
+               const winnerIdx = randomNum(0, players.length, 1)
+               scores[winnerIdx] = Math.min(...scores) - 1
+
+               nameLabels.forEach((nameLabel, idx) => {
+                  console.log(scores[idx])
+                  const transition = `transform ${scores[idx]}s`
+                  const ttf = ['linear', 'ease-in', 'ease-in-out', 'ease-out', 'ease']
+                  setTimeout(() => {
+                     nameLabel.style.transition = transition
+                     nameLabel.style.transitionTimingFunction = ttf[ttfIdx]
+                     nameLabel.style.transform = 'translateX(270px)'
+                  }, 1000)
+
+                  const time = (scores[idx] + 1) * 1000
+                  setTimeout(() => {
+                     nameLabel.innerHTML += `<div class="sesult" >${scores[idx]}초</div>`
+                     if (scores[idx] == scores[winnerIdx]) nameLabel.innerHTML += `<div>👑</div>`
+                  }, time)
+
+                  replay.innerHTML = `<button onClick="location.reload()">재도전</button>`
+               })
             })
+         }
+
+         const randomNum = (min, max, length) => {
+            const score = []
+            for (let i = 0; i < length; i++) score.push(Math.floor(Math.random() * (max - min)) + min)
+            return score
          }
       </script>
    </body>
